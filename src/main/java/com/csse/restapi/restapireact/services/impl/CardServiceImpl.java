@@ -1,7 +1,6 @@
 package com.csse.restapi.restapireact.services.impl;
 
 import com.csse.restapi.restapireact.entities.Cards;
-import com.csse.restapi.restapireact.entities.Items;
 import com.csse.restapi.restapireact.repositories.CardRepository;
 import com.csse.restapi.restapireact.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +28,16 @@ public class CardServiceImpl implements CardService {
     @Override
     public Cards addCard(Cards card) {
         return cardRepository.save(card);
+    }
+
+    @Override
+    public Cards updateCard(Cards card) {
+        return cardRepository.save(card);
+    }
+
+    @Override
+    public Long deleteCard(Long id) {
+        cardRepository.deleteById(id);
+        return id;
     }
 }

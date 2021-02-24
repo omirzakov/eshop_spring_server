@@ -48,4 +48,20 @@ public class CardController {
         cardService.addCard(card);
         return ResponseEntity.ok(card);
     }
+
+    @PutMapping(value = "/updatecard")
+    public ResponseEntity<?> updateTask(@RequestBody Cards card) {
+        cardService.updateCard(card);
+
+        return ResponseEntity.ok(card);
+    }
+
+    @DeleteMapping(value = "/deletecard/{id}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long id) {
+        Cards card = cardService.getCard(id);
+
+        cardService.deleteCard(card.getId());
+
+        return ResponseEntity.ok(card);
+    }
 }

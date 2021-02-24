@@ -10,4 +10,7 @@ public interface CardService {
     List<Cards> getAllCards();
     Cards getCard(Long id);
     Cards addCard(Cards card);
+    Cards updateCard(Cards card);
+    Long deleteCard(Long id);
+
 }
