@@ -12,5 +12,6 @@ public interface CardService {
     Cards addCard(Cards card);
     Cards updateCard(Cards card);
     Long deleteCard(Long id);
+    List<Cards> searchByName(String name);
 
 }

@@ -40,4 +40,9 @@ public class CardServiceImpl implements CardService {
         cardRepository.deleteById(id);
         return id;
     }
+
+    @Override
+    public List<Cards> searchByName(String name) {
+        return cardRepository.getAllByNameLike(name);
+    }
 }

@@ -64,4 +64,13 @@ public class CardController {
 
         return ResponseEntity.ok(card);
     }
+
+    @GetMapping(value = "/search/{name}")
+    public ResponseEntity<?> searchName(@PathVariable String name) {
+        name ="%"+name+"%";
+
+        List<Cards> cards = cardService.searchByName(name);
+
+        return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
 }
