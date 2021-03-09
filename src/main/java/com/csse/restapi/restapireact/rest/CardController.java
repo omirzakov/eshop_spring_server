@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
 public class CardController {
 
 
@@ -52,6 +52,7 @@ public class CardController {
     @PutMapping(value = "/updatecard")
     public ResponseEntity<?> updateTask(@RequestBody Cards card) {
         cardService.updateCard(card);
+        System.out.println(cardService.updateCard(card));
 
         return ResponseEntity.ok(card);
     }
