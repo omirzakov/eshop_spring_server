@@ -34,7 +34,7 @@ public class UserService {
     }
 
     public Users findByLogin(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.getByEmail(email);
     }
 
     public Users findByLoginAndPassword(String login, String password) {
@@ -45,6 +45,31 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public Users updateFullname(String email, String fullname) {
+        Users user = userRepository.getByEmail(email);
+        user.setFullname(fullname);
+
+        return  userRepository.save(user);
+    }
+
+    public boolean checkPassword(Users user, String old) {
+        if(passwordEncoder.matches(old, user.getPassword())) {
+            System.out.println("valid");
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public Users updatePassword(Users user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
+
+        userRepository.save(user);
+
+        return user;
     }
 
 

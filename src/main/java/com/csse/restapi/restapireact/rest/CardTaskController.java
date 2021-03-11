@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CardTaskController {
 
     @Autowired
@@ -54,7 +54,6 @@ public class CardTaskController {
 
     @PostMapping(value = "/deletesubtask/{id}")
     public ResponseEntity<?> deleteSubTask(@PathVariable Long id){
-        System.out.println(id);
         CardTasks card = cardTaskService.getSubCard(id);
 
         cardTaskService.deleteSubCard(card.getId());
