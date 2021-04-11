@@ -66,6 +66,7 @@ public class UserService {
 
     public Users updatePassword(Users user, String password) {
         user.setPassword(passwordEncoder.encode(password));
+        System.out.println("Test");
 
         userRepository.save(user);
 
