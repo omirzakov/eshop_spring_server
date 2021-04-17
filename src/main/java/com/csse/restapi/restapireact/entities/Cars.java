@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car_categories")
+@Table(name = "cars")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class Cars {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,12 @@ public class Category {
     @Column(name = "picture")
     private String picture;
 
-    public String getName() {
-        return this.name;
-    }
+    @Column(name = "wheels")
+    private  int wheels;
+
+    @Column(name = "doors")
+    private  int doors;
+
+    @ManyToOne
+    private Category category;
 }

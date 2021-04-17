@@ -14,8 +14,6 @@ public class CardTaskServiceImpl implements CardTaskService {
     @Autowired
     private CardTaskRepository cardTaskRepository;
 
-
-
     @Override
     public List<CardTasks> getAllCardTasks(Cards card) {
 
