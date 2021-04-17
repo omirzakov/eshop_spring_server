@@ -59,7 +59,6 @@ public class AuthController {
     @PostMapping(value = "/updatename/{token}/{fullname}")
     public ResponseEntity<?> updateFullname(@PathVariable String token, @PathVariable String fullname) {
         Users user = null;
-
         if(jwtProvider.validateToken(token)) {
             String email = jwtProvider.getLoginFromToken(token);
 
