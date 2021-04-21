@@ -40,6 +40,8 @@ public class CardController {
     public ResponseEntity<Cards> getCard(@PathVariable Long id) {
         Cards card = cardService.getCard(id);
 
+
+
         return new ResponseEntity<Cards>(card, HttpStatus.OK);
     }
 

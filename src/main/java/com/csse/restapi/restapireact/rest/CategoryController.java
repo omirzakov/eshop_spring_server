@@ -18,9 +18,6 @@ public class CategoryController {
     @Autowired
     public CategoryRepository categoryRepository;
 
-    @Autowired
-    private CardRepository cardRepository;
-
     @GetMapping(value = "/getcategories")
     public ResponseEntity<?> getAllItems(){
         List<Category> items = categoryRepository.findAll();
@@ -46,10 +43,9 @@ public class CategoryController {
 
     @PutMapping(value = "/editcategory/{id}")
     public ResponseEntity editCategory(@RequestBody Category category, @PathVariable Long id) {
-        System.out.println(category);
-        System.out.println(id);
+        categoryRepository.save(category);
 
-        return new ResponseEntity(null, HttpStatus.OK);
+        return new ResponseEntity("Success", HttpStatus.OK);
     }
 
     @DeleteMapping("/deletecategory/{id}")
