@@ -32,6 +32,12 @@ public class Publication {
     @Column(name = "contact")
     private String contact;
 
+    @Column(name ="price")
+    private Long price;
+
+    @Column(name = "year")
+    private int year;
+
     @Column(name = "email")
     private String email;
 

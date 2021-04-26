@@ -10,5 +10,8 @@ public interface PublicationService {
     Publication getPublication(Long id);
     Publication addPublication(Publication publication);
     Publication updatePublication(Publication publication);
+    Publication findByName(String name);
+    List<Publication> getAllPublicationByUserId(Long id);
+    List<Publication> getAllByCategoryName(String name);
     void deletePublication(Long id);
 }

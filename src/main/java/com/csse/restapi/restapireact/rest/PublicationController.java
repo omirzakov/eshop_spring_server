@@ -39,6 +39,25 @@ public class PublicationController  {
         return new ResponseEntity<Publication>(publication, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/userpublications/{token}")
+    public ResponseEntity<?> getUserPublications(@PathVariable String token) {
+        String email = jwtProvider.getLoginFromToken(token);
+        Users currentUser = null;
+
+        if(email != null && email.length() > 0) {
+            currentUser = userService.findByLogin(email);
+        }
+        List<Publication> publications = publicationRepository.findByUserId(currentUser.getId());
+
+        return new ResponseEntity<>(publications, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/publicationsbycategory/{name}")
+    public ResponseEntity<?> getPublicationsByCategory(@PathVariable String  name) {
+        List<Publication> publications = publicationRepository.findAllByCarCategorySlug(name);
+        return new ResponseEntity<>(publications, HttpStatus.OK);
+    }
+
     @PostMapping(value = "/newpublication/{token}")
     public ResponseEntity addPublication(@RequestBody Publication publication, @PathVariable String token) {
         String email = jwtProvider.getLoginFromToken(token);
@@ -48,6 +67,9 @@ public class PublicationController  {
             publication.setUser(currentUser);
             publicationRepository.save(publication);
         }
+
+
+
 
         return new ResponseEntity("Success", HttpStatus.OK);
     }
@@ -62,6 +84,8 @@ public class PublicationController  {
 
         return new ResponseEntity("Success", HttpStatus.OK);
     }
+
+
 
     @DeleteMapping("/deletepublication/{id}")
     public ResponseEntity deletePublication(@PathVariable Long id) {

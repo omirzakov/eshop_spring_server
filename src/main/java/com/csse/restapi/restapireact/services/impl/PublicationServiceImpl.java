@@ -33,6 +33,21 @@ public class PublicationServiceImpl implements PublicationService {
     }
 
     @Override
+    public Publication findByName(String name) {
+        return publicationRepository.findByName(name);
+    }
+
+    @Override
+    public List<Publication> getAllPublicationByUserId(Long id) {
+        return publicationRepository.findByUserId(id);
+    }
+
+    @Override
+    public List<Publication> getAllByCategoryName(String name) {
+        return publicationRepository.findAllByCarCategorySlug(name);
+    }
+
+    @Override
     public void deletePublication(Long id) {
 
     }

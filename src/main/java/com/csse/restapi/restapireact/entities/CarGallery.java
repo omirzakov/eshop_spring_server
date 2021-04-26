@@ -6,32 +6,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "car_categories")
+@Table(name = "cars_gallery")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class CarGallery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "pic_url")
+    private String picUrl;
 
-    @Column(name = "description")
-    private String description;
+    @ManyToOne
+    private Publication publication;
 
-    @Column(name = "slug")
-    private String slug;
-
-    @Column(name = "picture")
-    private String picture;
-
-    public String getName() {
-        return this.name;
+    public void setPublication(Publication publication) {
+        this.publication = publication;
     }
 }
+

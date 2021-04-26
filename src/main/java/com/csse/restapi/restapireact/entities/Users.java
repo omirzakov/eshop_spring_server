@@ -36,6 +36,10 @@ public class Users {
         return this.email;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getPassword() {
         return this.password;
     }
