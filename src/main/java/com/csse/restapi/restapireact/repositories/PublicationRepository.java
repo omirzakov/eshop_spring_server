@@ -13,5 +13,6 @@ import java.util.List;
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
     List<Publication> findByUserId(Long id);
     List<Publication> findAllByCarCategorySlug(String name);
+    List<Publication> findAllByCarNameAndPriceBetweenOrderByPriceDesc(String name, Long from, Long to);
     Publication findByName(String name);
 }

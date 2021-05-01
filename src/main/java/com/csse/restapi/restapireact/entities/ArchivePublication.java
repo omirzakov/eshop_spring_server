@@ -6,28 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "cars_gallery")
+@Table(name = "publications_archive")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarGallery {
+public class ArchivePublication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "pic_url")
-    private String picUrl;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Publication publication;
-
-    public void setPublication(Publication publication) {
-        this.publication = publication;
-    }
 }
-

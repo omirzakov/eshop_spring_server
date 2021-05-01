@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FilterByModelPrice {
 
-
+    private int minimum;
+    private int maximum;
 }

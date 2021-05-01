@@ -38,6 +38,10 @@ public class Comment {
     @ManyToOne
     private Users user;
 
+    public Long getId() {
+        return id;
+    }
+
     public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
     }

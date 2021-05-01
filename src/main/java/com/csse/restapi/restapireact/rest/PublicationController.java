@@ -24,6 +24,9 @@ public class PublicationController  {
     private JwtProvider jwtProvider;
 
     @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -70,11 +73,18 @@ public class PublicationController  {
             publication.setUser(currentUser);
             publicationRepository.save(publication);
         }
-
-
-
-
         return new ResponseEntity("Success", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getpublications/{name}/{from}/{to}")
+    public ResponseEntity getPublicationsByCarName(@PathVariable String name, @PathVariable Long from, @PathVariable Long to) {
+        System.out.println(from);
+        System.out.println(to);
+        List<Publication> publications = publicationRepository.findAllByCarNameAndPriceBetweenOrderByPriceDesc(name, from, to);
+
+
+
+        return new ResponseEntity(publications, HttpStatus.OK);
     }
 
     @PutMapping(value = "/editpublication/{id}/{token}")
@@ -95,10 +105,19 @@ public class PublicationController  {
 //        publicationRepository.deleteById(id);
 
         List<CarGallery> carGalleries = carGalleryRepository.findAllByPublicationId(id);
+        List<Comment> comments = commentRepository.findAllByPublicationIdOrderByAddedDateDesc(id);
+        System.out.println(comments);
 
         for(int i = 0; i < carGalleries.size(); i++) {
             carGalleryRepository.delete(carGalleries.get(i));
         }
+
+        for(int i = 0; i < comments.size(); i++) {
+            System.out.println(comments.get(i).getId());
+            commentRepository.delete(comments.get(i));
+        }
+
+
 
         publicationRepository.deleteById(id);
 
