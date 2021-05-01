@@ -26,6 +26,9 @@ public class PublicationController  {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CarGalleryRepository carGalleryRepository;
+
     @GetMapping(value = "/getpublications")
     public ResponseEntity<?> getAllItems(){
         List<Publication> items = publicationRepository.findAll();
@@ -89,6 +92,14 @@ public class PublicationController  {
 
     @DeleteMapping("/deletepublication/{id}")
     public ResponseEntity deletePublication(@PathVariable Long id) {
+//        publicationRepository.deleteById(id);
+
+        List<CarGallery> carGalleries = carGalleryRepository.findAllByPublicationId(id);
+
+        for(int i = 0; i < carGalleries.size(); i++) {
+            carGalleryRepository.delete(carGalleries.get(i));
+        }
+
         publicationRepository.deleteById(id);
 
         return new ResponseEntity(null, HttpStatus.OK);
