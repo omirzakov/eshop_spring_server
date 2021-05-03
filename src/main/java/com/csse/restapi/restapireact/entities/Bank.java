@@ -1,23 +1,25 @@
 package com.csse.restapi.restapireact.entities;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "car_categories")
+@Table(name = "banks")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
-
+public class Bank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
+    private String name;
 
     public Long getId() {
         return id;
@@ -27,24 +29,12 @@ public class Category {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
     }
 
     public String getPicture() {
@@ -55,19 +45,6 @@ public class Category {
         this.picture = picture;
     }
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "slug")
-    private String slug;
-
     @Column(name = "picture")
     private String picture;
-
-    public String getName() {
-        return this.name;
-    }
 }

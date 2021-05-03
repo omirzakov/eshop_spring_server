@@ -41,6 +41,13 @@ public class Publication {
     @Column(name = "email")
     private String email;
 
+    public Cars getCar() {
+        return car;
+    }
+
+    public void setCar(Cars car) {
+        this.car = car;
+    }
 
     @ManyToOne
     private Users user;

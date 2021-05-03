@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Students</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+    <!-- Students Table -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-5">Congratulations on buying a car!</h2>
+        <h3>Car loan receipt</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">IIN</th>
+                    <td th:text="${credit.getIin()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Term</th>
+                    <td th:text="${credit.getMonth()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Bank</th>
+                    <td th:text="${credit.bank.getName()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td th:text="${credit.user.getEmail()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Total price</th>
+                    <td th:text="${credit.getTotalSum()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Car model</th>
+                    <td th:text="${credit.getPublication().car.getName()}"> </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4 class="mt-5">
+            List of required documents (at the application stage)*
+        </h4>
+        <p>
+            The client's identity document is the original.
+            * The list of documents in this list is not exhaustive.
+            Depending on the legal status of the Borrower, credit conditions, requirements of the legislation of the Republic
+
+            Kazakhstan / Internal regulations of the Bank and circumstances The Bank is entitled to use other regulations
+
+            additional documents
+        </p>
+
+        <p>
+            Repayment of the loan is carried out by placing money
+            funds on the borrower's bank (current) account.
+            Ways to top up a bank (current account) account
+            the borrower:
+            • via the Bank's ATM with the function of accepting cash
+            funds (required to have a payment bank card) —
+            free method;
+            * transfer from a Bank branch or from another bank (required
+            know all the details of the borrower's account);
+            • by wire transfer via payment systems —
+            bank partners (you need to know all the account details
+            the borrower);
+            • in the post office of the "Russian Post" by transfer without
+            opening an account in Russian rubles (required
+            know all the details of the borrower's account);
+            • in cash at any additional office / branch
+            Pot
+        </p>
+
+        <p>
+            The borrower has the right to refuse to receive a loan at any time
+            before the conclusion of the contract.
+            The borrower has the right to refuse to receive a loan for the entire period of time.
+            the term of the agreement, notifying the Bank about it by submitting
+            the corresponding application, with the payment of interest for the actual
+            the term of the loan and the repayment of the previously received loan
+        </p>
+
+        <p>
+            Penalty in the form of a penalty in the amount of 0.1% per day, in the form of interest,
+            accrued for each day of delay for the amount of the current one
+            loan debt on the loan.
+            In case of late submission of a copy to the Bank
+            insurance policy of the vehicle insurance contract (if
+            provided by the terms of the loan), the Borrower pays
+            a penalty of 0.6% per day in the form of interest accrued for
+            each day of delay on the amount of the current loan debt
+            on the loan
+        </p>
+        <img src="pechat.png" alt="" width="150px" />
+        <img src="podpis.png" alt="" width="50px" />
+
+    </div>
+
+</body>
+
+</html>
