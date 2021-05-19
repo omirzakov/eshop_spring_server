@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -41,17 +42,23 @@ public class CarCreditController {
         this.pdfService = pdfService;
     }
 
-//    @GetMapping(value = "/getcargallery/{id}")
-//    public ResponseEntity<?> getAllItems(@PathVariable Long id){
-//        List<CarGallery> items = carGalleryRepository.findAllByPublicationId(id);
-//        return new ResponseEntity<>(items, HttpStatus.OK);
-//    }
+    @GetMapping(value = "/carcredits")
+    public ResponseEntity<?> getAllItems(){
+        List<CarCredit> items = carCreditRepository.findAll();
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @Scheduled(fixedDelay = 1000, initialDelay = 1000)
+    public void scheduleFixedRateWithInitialDelayTask() {
+
+        long now = System.currentTimeMillis() / 1000;
+        System.out.println(
+                "Fixed rate task with one second initial delay - " + now);
+    }
 
     @PostMapping(value = "/addcredit")
     public ResponseEntity<?> addCarGallery(@RequestBody CarCredit credit) {
         carCreditRepository.save(credit);
-
-
 
         return new ResponseEntity<>("items", HttpStatus.OK);
     }

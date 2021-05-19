@@ -7,6 +7,7 @@ import com.csse.restapi.restapireact.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -37,6 +38,12 @@ public class BankController {
         bankRepository.save(bank);
 
         return new ResponseEntity("Success", HttpStatus.OK);
+    }
+
+    @Scheduled(fixedRate = 1000)
+    public void scheduleFixedRateTask() {
+        System.out.println(
+                "Fixed rate task - " + System.currentTimeMillis() / 1000);
     }
 
     @DeleteMapping("/deletebank/{id}")
